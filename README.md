@@ -129,7 +129,7 @@ Model for Retail Distribution Networks"
 
 ## Author
 **Kani Okorji**
-Data Analyst | Supply Chain & Inventory Analytics
+Data Analyst | Supply Chain & Inventory Analytics...
 
 🎓 MS Project Management (Data Analytics) | MBA
 🏢 Inventory Specialist — Bath & Body Works
