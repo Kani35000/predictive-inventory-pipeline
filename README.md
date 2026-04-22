@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Predictive Inventory Management Pipeline
 ## Reorder Point & Demand Forecasting Model for Retail Distribution Networks
 
@@ -87,6 +86,14 @@ predictive-inventory-pipeline/
 
 ---
 
+## Database
+This project connects to the existing 
+retail_analytics PostgreSQL database 
+established in Phase 1.
+
+See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipeline)
+
+
 ## 🔬 Methodology
 ### Reorder Point Formula
 ROP = (Average Daily Demand × Lead Time) + Safety Stock
@@ -139,7 +146,3 @@ Data Analyst | Supply Chain & Inventory Analytics...
 🔗 [LinkedIn](https://www.linkedin.com/in/kani-okorji-20869666/)
 💻 [GitHub](https://github.com/Kani35000)
 📧 kanidayeokorji@gmail.com
-=======
-# predictive-inventory-pipeline
-A predictive analytics extension of the Retail Inventory Optimization Pipeline applying demand forecasting and reorder point optimization to prevent the  $163.9M in stockout losses identified in Phase 1.
->>>>>>> 6a3c3dffd4ac07fefb700500bc93030086b026d7
