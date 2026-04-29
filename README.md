@@ -64,13 +64,14 @@ The question Phase 2 answers:
 ---
 
 ## Project Architecture
+```
 predictive-inventory-pipeline/
-├── 01_database/        # Additional views and stored procedures
+├── 01_database/        # sql queries
 ├── 02_forecasting/     # Demand forecasting scripts
 ├── 03_reorder/         # Reorder point calculations
 ├── 04_powerbi/         # Predictive dashboard
 └── README.md
----
+```
 
 ## 📌 Project Status
 | Layer | Status |
