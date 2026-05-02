@@ -94,6 +94,19 @@ established in Phase 1.
 
 See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipeline)
 
+## 📌 KPI Progress
+
+| KPI | Description | Status |
+|---|---|---|
+| KPI 1 | Average Daily Demand per SKU per Warehouse | ✅ Complete |
+| KPI 2 | Demand Variability (Std Dev & CV%) | ✅ Complete |
+| KPI 3 | Reorder Point per SKU per Warehouse | 🔨 In Progress |
+| KPI 4 | Safety Stock Optimization | 🔨 Planned |
+| KPI 5 | Stockout Risk Score | 🔨 Planned |
+| KPI 6 | Demand Forecast (30 day) | 🔨 Planned |
+| KPI 7 | Optimal Order Quantity (EOQ) | 🔨 Planned |
+| KPI 8 | Projected Savings from Optimization | 🔨 Planned |
+
 
 ## 🔬 Methodology
 ### Reorder Point Formula
