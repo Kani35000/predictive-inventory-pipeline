@@ -76,7 +76,7 @@ predictive-inventory-pipeline/
 ## 📌 Project Status
 | Layer | Status |
 |---|---|
-| Database Connection | 🔨 In Progress |
+| Database Connection | ✅ Complete|
 | Demand Analysis | 🔨 In Progress |
 | Reorder Point Calculation | 🔨 Planned |
 | Safety Stock Optimization | 🔨 Planned |
