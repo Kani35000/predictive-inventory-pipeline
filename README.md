@@ -77,9 +77,9 @@ predictive-inventory-pipeline/
 | Layer | Status |
 |---|---|
 | Database Connection | ✅ Complete|
-| Demand Analysis | 🔨 In Progress |
-| Reorder Point Calculation | 🔨 Planned |
-| Safety Stock Optimization | 🔨 Planned |
+| Demand Analysis | ✅ Complete |
+| Reorder Point Calculation | 🔨 In Progress|
+| Safety Stock Optimization | 🔨 In Progress|
 | Demand Forecasting Model | 🔨 Planned |
 | Stockout Risk Scoring | 🔨 Planned |
 | Power BI Predictive Dashboard | 🔨 Planned |
