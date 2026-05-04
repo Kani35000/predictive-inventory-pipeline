@@ -78,8 +78,8 @@ predictive-inventory-pipeline/
 |---|---|
 | Database Connection | ✅ Complete|
 | Demand Analysis | ✅ Complete |
-| Reorder Point Calculation | 🔨 In Progress|
-| Safety Stock Optimization | 🔨 In Progress|
+| Reorder Point per SKU per Warehouse | ✅ Complete |
+| Safety Stock Optimization | ✅ Complete |
 | Demand Forecasting Model | 🔨 Planned |
 | Stockout Risk Scoring | 🔨 Planned |
 | Power BI Predictive Dashboard | 🔨 Planned |
@@ -100,11 +100,11 @@ See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipe
 |---|---|---|
 | KPI 1 | Average Daily Demand per SKU per Warehouse | ✅ Complete |
 | KPI 2 | Demand Variability (Std Dev & CV%) | ✅ Complete |
-| KPI 3 | Reorder Point per SKU per Warehouse | 🔨 In Progress |
-| KPI 4 | Safety Stock Optimization | 🔨 Planned |
-| KPI 5 | Stockout Risk Score | 🔨 Planned |
-| KPI 6 | Demand Forecast (30 day) | 🔨 Planned |
-| KPI 7 | Optimal Order Quantity (EOQ) | 🔨 Planned |
+| KPI 3 | Reorder Point per SKU per Warehouse | ✅ Complete |
+| KPI 4 | Safety Stock Optimization | ✅ Complete |
+| KPI 5 | Stockout Risk Score | 🔨 In Progress |
+| KPI 6 | Demand Forecast (30 day) | 🔨 In Progress |
+| KPI 7 | Optimal Order Quantity (EOQ) | 🔨 In Progress |
 | KPI 8 | Projected Savings from Optimization | 🔨 Planned |
 
 
@@ -132,8 +132,21 @@ Method 3 → Prophet (seasonal decomposition)
 ---
 
 ## 🔬 Limitations & Further Investigation
-→ To be documented as methodology develops
 
+### Lead Time Assumption
+Current model assumes a fixed lead time 
+of 7 days for all products and warehouses.
+
+| Limitation | Current Approach | Production Enhancement |
+|---|---|---|
+| Fixed lead time | 7 days constant | Vendor table with supplier specific lead times |
+| Single service level | 95% (Z=1.65) for all products | Category based service levels (99%+ for critical items) |
+| No supplier variability | Lead time variance ignored | Add lead time standard deviation to safety stock formula |
+
+> **Note:** In a production pharmaceutical environment 
+> lead times would be sourced from vendor master data 
+> in SAP or Oracle ERP with different lead times per 
+> supplier, product category, and transportation mode.
 ---
 
 ## 🔗 Research Publication
