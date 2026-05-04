@@ -80,8 +80,8 @@ predictive-inventory-pipeline/
 | Demand Analysis | ✅ Complete |
 | Reorder Point per SKU per Warehouse | ✅ Complete |
 | Safety Stock Optimization | ✅ Complete |
-| Demand Forecasting Model | 🔨 Planned |
-| Stockout Risk Scoring | 🔨 Planned |
+| Demand Forecasting Model | 🔨 In Progress |
+| Stockout Risk Scoring | 🔨 In Progress |
 | Power BI Predictive Dashboard | 🔨 Planned |
 | Research Publication | 🔨 Planned |
 
