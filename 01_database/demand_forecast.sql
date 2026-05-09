@@ -39,7 +39,8 @@ ORDER BY
 
 -- ============================================
 -- MOORE INSIGHTS: DIVERGENCE ANALYSIS
--- Comparason between 7 Day and 30 Day Simple Moving Average Divergence greater than 10units sold
+-- Comparason between 7 Day and 30 Day Simple Moving Average Divergence 
+-- Fond 47 highrisk sku's
 -- ============================================
 
 WIth forecast AS(
