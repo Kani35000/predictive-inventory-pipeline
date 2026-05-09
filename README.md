@@ -141,6 +141,37 @@ Method 3 → Prophet (seasonal decomposition)
 > concentrated in Q4 validate the seasonal 
 > patterns identified in Phase 1 turnover analysis.
 
+#### Demand Trend Analysis (Divergence > 10 units)
+| Finding | Count | Implication |
+|---|---|---|
+| Products with increasing demand | 24 | Reorder points need upward adjustment |
+| Products with decreasing demand | 23 | Risk of overstock — reduce order quantities |
+| Total significant divergences | 47 of 500 SKUs (9.4%) | Targeted reorder review required |
+
+#### Key Findings
+| Warehouse | Pattern | Action Required |
+|---|---|---|
+| Dallas | Multiple products with increasing demand | Elevate reorder points for flagged SKUs |
+| Los Angeles | Fragrance Product 96 consistently declining | Reduce safety stock for this SKU |
+| Chicago | Mixed signals — seasonal products volatile | Dynamic reorder points for seasonal category |
+| New Jersey | Multiple declining products | Monitor for overstock risk |
+
+#### Product Category Intelligence
+| Category | Trend | Implication |
+|---|---|---|
+| Seasonal | Highest divergence frequency | Requires dynamic reorder points |
+| Fragrance | Mixed signals by warehouse | Warehouse specific reorder strategy |
+| Body Care | Mostly positive signals | Increasing demand across network |
+| Lotion | Mixed signals | Monitor individually |
+
+> **Conclusion:** 9.4% of SKU-warehouse combinations 
+> show significant demand divergence requiring 
+> immediate reorder point review. Seasonal products 
+> exhibit the highest volatility confirming the need 
+> for dynamic rather than fixed reorder points — 
+> particularly critical in pharmaceutical supply chains 
+> where demand spikes cannot be met with delayed 
+> replenishment.
 ---
 
 ## 🔬 Limitations & Further Investigation
