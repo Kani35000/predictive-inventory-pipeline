@@ -80,7 +80,7 @@ predictive-inventory-pipeline/
 | Demand Analysis | ✅ Complete |
 | Reorder Point per SKU per Warehouse | ✅ Complete |
 | Safety Stock Optimization | ✅ Complete |
-| Demand Forecasting Model | 🔨 In Progress |
+| Demand Forecasting Model | ✅ Complete |
 | Stockout Risk Scoring | 🔨 In Progress |
 | Power BI Predictive Dashboard | 🔨 Planned |
 | Research Publication | 🔨 Planned |
@@ -103,9 +103,9 @@ See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipe
 | KPI 3 | Reorder Point per SKU per Warehouse | ✅ Complete |
 | KPI 4 | Safety Stock Optimization | ✅ Complete |
 | KPI 5 | Stockout Risk Score | 🔨 In Progress |
-| KPI 6 | Demand Forecast (30 day) | 🔨 In Progress |
+| KPI 6 | Demand Forecast (30 day) | ✅ Complete |
 | KPI 7 | Optimal Order Quantity (EOQ) | 🔨 In Progress |
-| KPI 8 | Projected Savings from Optimization | 🔨 Planned |
+| KPI 8 | Projected Savings from Optimization | 🔨 In Progress |
 
 
 ## 🔬 Methodology
@@ -127,7 +127,19 @@ Method 3 → Prophet (seasonal decomposition)
 ---
 
 ## 📊 Key Findings So Far
-→ Coming soon as analysis is completed
+
+### 📊 Demand Forecast Insights
+| Finding | Observation | Implication |
+|---|---|---|
+| SMA_7 ≈ SMA_30 | Demand is stable across most SKUs | Fixed reorder points are reliable |
+| Low SMA divergence | No dramatic short term spikes | Current safety stock buffers adequate |
+| Seasonal divergence | SMA_7 > SMA_30 in Q4 | Reorder points need upward adjustment in holiday period |
+
+> **Conclusion:** The similarity between 7-day and 
+> 30-day moving averages confirms stable baseline 
+> demand across warehouses. Divergence periods 
+> concentrated in Q4 validate the seasonal 
+> patterns identified in Phase 1 turnover analysis.
 
 ---
 
