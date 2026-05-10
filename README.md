@@ -98,14 +98,15 @@ See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipe
 
 | KPI | Description | Status |
 |---|---|---|
-| KPI 1 | Average Daily Demand per SKU per Warehouse | ✅ Complete |
-| KPI 2 | Demand Variability (Std Dev & CV%) | ✅ Complete |
-| KPI 3 | Reorder Point per SKU per Warehouse | ✅ Complete |
-| KPI 4 | Safety Stock Optimization | ✅ Complete |
-| KPI 5 | Stockout Risk Score | ✅ Complete  |
-| KPI 6 | Demand Forecast (30 day) | ✅ Complete |
-| KPI 7 | Optimal Order Quantity (EOQ) | 🔨 In Progress |
-| KPI 8 | Projected Savings from Optimization | 🔨 In Progress |
+| KPI 1 | Average Daily Demand | ✅ Complete |
+| KPI 2 | Demand Variability (CV%) | ✅ Complete |
+| KPI 3 | Reorder Point | ✅ Complete |
+| KPI 4 | Safety Stock | ✅ Complete |
+| KPI 5 | 7-Day Moving Average | ✅ Complete |
+| KPI 6 | 30-Day Moving Average | ✅ Complete |
+| KPI 7 | Stockout Risk Score | ✅ Complete |
+| KPI 8 | Projected Savings | ✅ Complete |
+| KPI 9 | Economic Order Quantity | 🔨 Planned |
 
 
 ## 🔬 Methodology
@@ -243,6 +244,42 @@ requiring immediate reorder point review.
 > that network wide inventory replenishment is urgently 
 > required with Dallas and Atlanta requiring immediate 
 > intervention.
+
+### 💰 Projected Savings from Inventory Optimization
+
+**Business Question:**
+"If we implement proper reorder points and safety 
+stock what percentage of $163.9M in stockout 
+losses can we prevent?"
+
+| Scenario | Prevention Rate | Network Savings | Remaining Loss |
+|---|---|---|---|
+| Conservative | 70% | $114.7M | $49.1M |
+| Moderate | 80% | $131.1M | $32.8M |
+| Aggressive | 90% | $147.5M | $16.4M |
+
+#### Savings by Warehouse (Conservative 70%)
+| Warehouse | Current Loss | Projected Savings | Remaining Loss |
+|---|---|---|---|
+| Atlanta DC | $38.3M | $26.8M | $11.5M |
+| Los Angeles DC | $35.4M | $24.8M | $10.6M |
+| New Jersey DC | $33.7M | $23.6M | $10.1M |
+| Dallas DC | $29.9M | $20.9M | $9.0M |
+| Chicago DC | $26.6M | $18.6M | $8.0M |
+
+> **Conclusion:** Implementing the reorder point 
+> and safety stock framework developed in Phase 2 
+> could prevent between $114.7M (conservative) 
+> and $147.5M (aggressive) of the $163.9M in 
+> stockout losses identified in Phase 1 — 
+> representing a 70-90% reduction in inventory 
+> loss exposure across the distribution network.
+
+> **Phase 1 → Phase 2 Connection:** Phase 1 
+> quantified $163.9M in losses. Phase 2 provides 
+> the optimization framework to prevent them. 
+> Together they form a complete inventory 
+> analytics solution.
 
 
 ## 🔬 Limitations & Further Investigation
