@@ -81,7 +81,7 @@ predictive-inventory-pipeline/
 | Reorder Point per SKU per Warehouse | ✅ Complete |
 | Safety Stock Optimization | ✅ Complete |
 | Demand Forecasting Model | ✅ Complete |
-| Stockout Risk Scoring | 🔨 In Progress |
+| Stockout Risk Scoring | ✅ Complete  |
 | Power BI Predictive Dashboard | 🔨 Planned |
 | Research Publication | 🔨 Planned |
 
@@ -102,7 +102,7 @@ See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipe
 | KPI 2 | Demand Variability (Std Dev & CV%) | ✅ Complete |
 | KPI 3 | Reorder Point per SKU per Warehouse | ✅ Complete |
 | KPI 4 | Safety Stock Optimization | ✅ Complete |
-| KPI 5 | Stockout Risk Score | 🔨 In Progress |
+| KPI 5 | Stockout Risk Score | ✅ Complete  |
 | KPI 6 | Demand Forecast (30 day) | ✅ Complete |
 | KPI 7 | Optimal Order Quantity (EOQ) | 🔨 In Progress |
 | KPI 8 | Projected Savings from Optimization | 🔨 In Progress |
