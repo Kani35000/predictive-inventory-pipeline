@@ -124,9 +124,42 @@ Method 1 → Moving Average (baseline)
 Method 2 → Exponential Smoothing
 Method 3 → Prophet (seasonal decomposition)
 
----
 
-## 📊 Key Findings So Far
+### Stockout Risk Scoring
+Risk classification combines three analytical layers:
+
+**Layer 1 — Demand Analysis:**
+avg_daily_demand = AVG(units_sold) per SKU per warehouse
+std_daily_demand = STDDEV(units_sold) — demand variability
+demand_variability_pct = (std / avg) × 100 — coefficient of variation
+
+**Layer 2 — Safety Stock Calculation:**
+Safety Stock = Z × σ × √Lead Time
+Where:
+Z         = 1.65 (95% service level)
+σ         = std_daily_demand
+Lead Time = 7 days (assumed constant)
+
+**Layer 3 — Reorder Point:**
+ROP = (avg_daily_demand × lead_time) + safety_stock
+
+**Layer 4 — Risk Classification:**
+days_until_stockout = current_inventory / avg_daily_demand
+CRITICAL → < 7 days  → Immediate reorder required
+HIGH     → < 14 days → Reorder this week
+MEDIUM   → < 30 days → Monitor closely
+LOW      → 30+ days  → Sufficient stock
+
+### Demand Forecasting
+Moving average analysis using SQL window functions:
+SMA_7  = 7 day simple moving average
+SMA_30 = 30 day simple moving average
+Divergence signal = SMA_7 - SMA_30
+
+Significant divergence (>10 units) identified in 
+47 of 500 SKU-warehouse combinations (9.4%) 
+requiring immediate reorder point review.
+---
 
 ### 📊 Demand Forecast Insights
 | Finding | Observation | Implication |
@@ -173,6 +206,44 @@ Method 3 → Prophet (seasonal decomposition)
 > where demand spikes cannot be met with delayed 
 > replenishment.
 ---
+### 🚨 Stockout Risk Analysis
+| Risk Level | SKU Count | % of Network | Days Until Stockout |
+|---|---|---|---|
+| 🚨 CRITICAL | ~240 | 48% | < 7 days |
+| 🔴 HIGH | ~60 | 12% | 7-14 days |
+| 🟡 MEDIUM | ~30 | 6% | 14-30 days |
+| 🟢 LOW | 1 | 0.2% | 30+ days |
+
+> **Critical Finding:** 60% of all SKU-warehouse 
+> combinations are at CRITICAL or HIGH stockout 
+> risk confirming the $163.9M in stockout losses 
+> identified in Phase 1. Only 1 of 500 SKUs 
+> maintains adequate inventory levels.
+
+### 🏭 Most Critical Warehouses
+| Warehouse | Most Critical SKU | Current Inventory | Days Until Stockout |
+|---|---|---|---|
+| Dallas | Seasonal Product 39 | -946 units | -20 days |
+| Atlanta | Fragrance Product 11 | -849 units | -18 days |
+| New Jersey | Body Care Product 60 | -839 units | -18 days |
+| Los Angeles | Fragrance Product 61 | -757 units | -16 days |
+| Chicago | Seasonal Product 34 | -641 units | -14 days |
+
+### 💡 Connected Insights — Phase 1 vs Phase 2
+| Finding | Phase 1 | Phase 2 |
+|---|---|---|
+| Dallas risk | High shrinkage 8.97% | Most critical stockout -946 units |
+| Atlanta risk | High stockout loss $38.3M | Second most critical -849 units |
+| Network exposure | $163.9M stockout losses | 60% SKUs at critical/high risk |
+| Inventory health | 28,769 stockout events | Only 1 SKU with adequate stock |
+
+> **Conclusion:** Phase 2 risk analysis confirms and 
+> quantifies the inventory crisis identified in Phase 1. 
+> The reorder point and safety stock framework reveals 
+> that network wide inventory replenishment is urgently 
+> required with Dallas and Atlanta requiring immediate 
+> intervention.
+
 
 ## 🔬 Limitations & Further Investigation
 
@@ -191,6 +262,39 @@ of 7 days for all products and warehouses.
 > in SAP or Oracle ERP with different lead times per 
 > supplier, product category, and transportation mode.
 ---
+
+## 🔬 Limitations & Further Investigation
+
+### Lead Time Assumption
+| Limitation | Current Approach | Production Enhancement |
+|---|---|---|
+| Fixed lead time | 7 days constant for all SKUs | Vendor master data with supplier specific lead times |
+| Single service level | Z=1.65 (95%) for all products | Category based levels (Z=2.33 for critical pharma items) |
+| Lead time variability | Not included in safety stock | Add σ(lead time) to safety stock formula |
+| Supplier reliability | Assumed 100% on time | Model lead time variability per supplier |
+
+### Current Inventory Calculation
+current_inventory = SUM of all historical transactions
+This represents cumulative net inventory
+from day 1 to present. Negative values indicate
+cumulative stockout position not instantaneous
+stock level. In production this would use
+real time WMS inventory snapshots.
+
+### Risk Score Limitations
+| Limitation | Impact | Enhancement |
+|---|---|---|
+| No expiry date tracking | Critical for pharma | Add FEFO logic |
+| No cold chain consideration | Pharma temperature requirements | Add temperature monitoring layer |
+| Static Z score | Same buffer for all products | Dynamic Z by product criticality |
+| No supplier lead time variability | Underestimates true safety stock | Add lead time standard deviation |
+
+> **Note:** In a pharmaceutical environment 
+> service levels would be set at 99%+ (Z=2.33) 
+> for critical medications significantly increasing 
+> safety stock requirements compared to the 95% 
+> service level used in this retail simulation.
+
 
 ## 🔗 Research Publication
 This project forms the basis of a companion research paper to:
