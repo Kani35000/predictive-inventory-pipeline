@@ -300,7 +300,6 @@ of 7 days for all products and warehouses.
 > supplier, product category, and transportation mode.
 ---
 
-## 🔬 Limitations & Further Investigation
 
 ### Lead Time Assumption
 | Limitation | Current Approach | Production Enhancement |
