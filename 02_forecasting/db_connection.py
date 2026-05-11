@@ -1,32 +1,24 @@
 # ============================================
 # DATABASE CONNECTION
-# retail-inventory-pipeline/02_pipeline/db_connection.py
+# predictive-inventory-pipeline/02_forecasting/db_connection.py
 # ============================================
 
-import os
-from dotenv import load_dotenv
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 
-# Load environment variables
+# Load environment variables from .env file
 load_dotenv()
 
 def get_engine():
-    """
-    Creates and returns a SQLAlchemy engine using environment variables.
-    """
-    try:
-        engine = create_engine(
-            f"postgresql+psycopg2://{os.getenv('DB_USER')}:"
-            f"{os.getenv('DB_PASSWORD')}@"
-            f"{os.getenv('DB_HOST')}:"
-            f"{os.getenv('DB_PORT')}/"
-            f"{os.getenv('DB_NAME')}"
-        )
-        return engine
-    
-    except Exception as e:
-        print(f"❌ Database connection failed: {e}")
-        raise
+    """Create and return database connection"""
+    connection_string = (
+        f"postgresql+psycopg2://"
+        f"{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
+        f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}"
+        f"/{os.getenv('DB_NAME')}"
+    )
+    return create_engine(connection_string)
 
 def test_connection():
     """Test database connection"""
@@ -41,4 +33,3 @@ def test_connection():
 
 if __name__ == "__main__":
     test_connection()
-
