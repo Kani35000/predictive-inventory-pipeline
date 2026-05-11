@@ -94,6 +94,19 @@ established in Phase 1.
 
 See: [Phase 1 Database Setup](https://github.com/Kani35000/retail-inventory-pipeline)
 
+### Configure Database Connection
+```bash
+# Copy example env file
+cp .env.example .env
+
+# Edit .env with your credentials
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=retail_analytics
+DB_USER=postgres
+DB_PASSWORD=your_password
+```
+
 ## 📌 KPI Progress
 
 | KPI | Description | Status |

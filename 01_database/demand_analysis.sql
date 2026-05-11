@@ -31,4 +31,4 @@ GROUP BY
     p.category
 ORDER BY 
     w.warehouse_name,
-    avg_daily_demand DESC;s
+    avg_daily_demand DESC;
