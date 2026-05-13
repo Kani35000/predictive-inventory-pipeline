@@ -1,6 +1,6 @@
 # ============================================
 # DATA EXTRACTION
-# retail-inventory-pipeline/02_pipeline/extract_data.py
+# predictive-inventory-pipeline/02_forecasting/extract_data.py
 # ============================================
 
 import pandas as pd
