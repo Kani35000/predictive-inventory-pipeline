@@ -53,13 +53,16 @@ The question Phase 2 answers:
 ---
 
 ## Tech Stack
-| Layer | Tool |
-|---|---|
-| Database | PostgreSQL (existing Phase 1 database) |
-| Forecasting | Python (statsmodels, Prophet, scikit-learn) |
-| Pipeline | Python (pandas, SQLAlchemy) |
-| Dashboard | Power BI |
-| Version Control | Git + GitHub |
+| Layer | Tool | Purpose |
+|---|---|---|
+| Database | PostgreSQL | Data storage and KPI queries |
+| Data Processing | Python (pandas) | Pipeline automation |
+| Statistical Analysis | statsmodels | Time series analysis |
+| ML Forecasting | scikit-learn | Linear regression demand model |
+| Advanced Forecasting | Prophet | Seasonal demand forecasting |
+| Dashboard | Power BI | Executive visualization |
+| API | FastAPI | REST endpoints |
+| Version Control | Git + GitHub | Code management |
 
 ---
 
@@ -121,6 +124,28 @@ DB_PASSWORD=your_password
 | KPI 8 | Projected Savings | ✅ Complete |
 | KPI 9 | Economic Order Quantity | 🔨 Planned |
 
+## 📊 KPI Story Arc
+
+| KPI | Method | Type |
+|---|---|---|
+| KPI 1-2 | Demand Analysis | Descriptive |
+| KPI 3-4 | Reorder Point & Safety Stock | Deterministic |
+| KPI 5-6 | Moving Average Forecast | Statistical |
+| KPI 7 | Stockout Risk Score | Analytical |
+| KPI 8 | Projected Savings | Scenario Analysis |
+| KPI 9 | Linear Regression Forecast | Machine Learning |
+| KPI 10 | Prophet Seasonal Forecast | Advanced ML |
+
+## Pipeline Structure
+02_forecasting/
+├── db_connection.py      ← connect to database
+├── extract_data.py       ← pull transactions
+├── demand_analysis.py    ← KPI 1 & 2
+├── reorder_point.py      ← KPI 3 & 4
+├── demand_forecast.py    ← KPI 5 & 6
+├── stockout_risk.py      ← KPI 7
+├── savings_analysis.py   ← KPI 8
+└── kpi_summary.py        ← combine all
 
 ## 🔬 Methodology
 ### Reorder Point Formula
@@ -293,6 +318,22 @@ losses can we prevent?"
 > the optimization framework to prevent them. 
 > Together they form a complete inventory 
 > analytics solution.
+
+## 🔗 Phase 1 → Phase 2 Connected Intelligence
+
+| Metric | Phase 1 Finding | Phase 2 Action |
+|---|---|---|
+| Chicago shrinkage 9.01% | High loss warehouse | ROP = 422 units avg |
+| Dallas shrinkage 8.97% | High loss warehouse | Most critical SKU -946 units |
+| Atlanta stockout $38.3M | Demand driven losses | 60% SKUs at critical risk |
+| LA stockout $35.4M | Demand driven losses | Highest divergence signals |
+| $163.9M total exposure | Phase 1 quantified | Phase 2 can prevent $114.7M-$147.5M |
+
+> **The Complete Story:**
+> Phase 1 diagnosed the problem.
+> Phase 2 builds the prevention system.
+> Together they form a complete
+> inventory analytics solution.
 
 
 ## 🔬 Limitations & Further Investigation
