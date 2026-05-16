@@ -1,112 +1,61 @@
-from extract_data import extract_transactions
+# ============================================
+# STOCKOUT RISK ANALYSIS
+# predictive-inventory-pipeline/02_forecasting/stockout_risk.py
+# ============================================
+
 import pandas as pd
 import numpy as np
+from extract_data import extract_transactions
+from demand_analysis import calculate_demand_analysis
 
-df = extract_transactions()
-
-def calculate_stockout_risk(df):
-
-    # ============================================
-    # Step 1 → Net Units Per Transaction
-    # ============================================
-
+def calculate_stockout_risk(df, demand_df):
+    """
+    Calculate stockout risk score per SKU per warehouse
+    Combines current inventory with demand analysis
+    """
+    # Calculate net units per transaction
     df['net_units'] = (
-        df['units_received']
-        + df['units_returned']
-        - df['units_sold']
-        - df['units_damaged']
+        df['units_received'] + df['units_returned']
+        - df['units_sold'] - df['units_damaged']
     )
 
-    # Step 2 → Demand Analysis
-    demand_analysis = (
-        df.groupby([
-            'warehouse_id',
-            'warehouse_name',
-            'product_id',
-            'product_name',
-            'category'
-        ])
-        .agg(
-            avg_daily_demand=('units_sold', 'mean'),
-            std_daily_demand=('units_sold', 'std')
-        )
-        .reset_index()
-    )
-
-    # Round values
-    demand_analysis['avg_daily_demand'] = (
-        demand_analysis['avg_daily_demand']
-        .round(2)
-    )
-
-    demand_analysis['std_daily_demand'] = (
-        demand_analysis['std_daily_demand']
-        .round(2)
-    )
-
-    # Step 3 → Demand Variability %
-    demand_analysis['demand_variability_pct'] = (
-        (
-            demand_analysis['std_daily_demand']
-            / demand_analysis['avg_daily_demand']
-        ) * 100
-    ).round(2)
-
-    # Running Inventory
+    # Calculate current inventory per SKU per warehouse
     current_inventory = (
-        df.groupby([
-            'warehouse_id',
-            'product_id'
-        ])['net_units']
-        .sum()
-        .reset_index()
+        df.groupby(['warehouse_name', 'product_name'])
+        ['net_units'].sum().reset_index()
+        .rename(columns={'net_units': 'current_inventory'})
     )
 
-    current_inventory.rename(
-        columns={'net_units': 'current_inventory'},
-        inplace=True
-    )
-
-
-    # Step 5 → Merge Demand + Inventory
-    risk_df = demand_analysis.merge(
+    # Merge demand analysis with current inventory
+    risk_df = demand_df.merge(
         current_inventory,
-        on=['warehouse_id', 'product_id'],
+        on=['warehouse_name', 'product_name'],
         how='inner'
     )
 
-
-    # Step 6 → Days Until Stockout
+    # Calculate days until stockout
     risk_df['days_until_stockout'] = (
-        risk_df['current_inventory']
-        / risk_df['avg_daily_demand']
+        risk_df['current_inventory'] /
+        risk_df['avg_daily_demand']
     ).round(2)
 
-    # Replace division-by-zero infinities
+    # Protect against division by zero
     risk_df['days_until_stockout'] = (
         risk_df['days_until_stockout']
         .replace([np.inf, -np.inf], np.nan)
     )
 
-    # Risk Level Classification
+    # Apply risk classification
     risk_df['risk_level'] = np.where(
-        risk_df['days_until_stockout'] < 7,
-        '🚨 CRITICAL',
-
+        risk_df['days_until_stockout'] < 7,   '🚨 CRITICAL',
         np.where(
-            risk_df['days_until_stockout'] < 14,
-            '🔴 HIGH',
+        risk_df['days_until_stockout'] < 14,  '🔴 HIGH',
+        np.where(
+        risk_df['days_until_stockout'] < 30,  '🟡 MEDIUM',
+                                               '🟢 LOW'
+    )))
 
-            np.where(
-                risk_df['days_until_stockout'] < 30,
-                '🟡 MEDIUM',
-                '🟢 LOW'
-            )
-        )
-    )
-
-
-    # Step 8 → Final Output
+    # Select and sort final output
     risk_df = risk_df[[
         'warehouse_name',
         'product_name',
@@ -117,20 +66,33 @@ def calculate_stockout_risk(df):
         'current_inventory',
         'days_until_stockout',
         'risk_level'
-    ]]
+    ]].sort_values('days_until_stockout', ascending=True
+    ).reset_index(drop=True)
 
-    risk_df = risk_df.sort_values(
-        by='days_until_stockout',
-        ascending=True
-    )
+    # Print summary
+    critical = len(risk_df[risk_df['risk_level'] == '🚨 CRITICAL'])
+    high     = len(risk_df[risk_df['risk_level'] == '🔴 HIGH'])
+    medium   = len(risk_df[risk_df['risk_level'] == '🟡 MEDIUM'])
+    low      = len(risk_df[risk_df['risk_level'] == '🟢 LOW'])
+
+    print(f"✅ Stockout risk analysis complete")
+    print(f"   🚨 CRITICAL: {critical} SKUs")
+    print(f"   🔴 HIGH:     {high} SKUs")
+    print(f"   🟡 MEDIUM:   {medium} SKUs")
+    print(f"   🟢 LOW:      {low} SKUs")
 
     return risk_df
 
-
 if __name__ == "__main__":
-
     df = extract_transactions()
+    demand = calculate_demand_analysis(df)
+    risk = calculate_stockout_risk(df, demand)
 
-    stockout_risk = calculate_stockout_risk(df)
-
-    print(stockout_risk)
+    print(f"\n📊 Most Critical SKUs:")
+    print(risk[risk['risk_level'] == '🚨 CRITICAL'][[
+        'warehouse_name',
+        'product_name',
+        'current_inventory',
+        'days_until_stockout',
+        'risk_level'
+    ]].head(10).to_string(index=False))
