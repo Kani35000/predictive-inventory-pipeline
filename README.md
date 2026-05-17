@@ -139,6 +139,7 @@ DB_PASSWORD=your_password
 | KPI 10 | Prophet Seasonal Forecast | Advanced ML |
 
 ## Pipeline Structure
+```
 02_forecasting/
 ├── db_connection.py      ← connect to database
 ├── extract_data.py       ← pull transactions
@@ -148,6 +149,7 @@ DB_PASSWORD=your_password
 ├── stockout_risk.py      ← KPI 7
 ├── savings_analysis.py   ← KPI 8
 └── kpi_summary.py        ← combine all
+```
 
 ## 🔬 Methodology
 ### Reorder Point Formula
