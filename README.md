@@ -335,6 +335,38 @@ losses can we prevent?"
 > Together they form a complete
 > inventory analytics solution.
 
+## 🔗 Conclusive Intelligence
+KPI 1-2 → Demand Analysis:
+→ 500 SKU-warehouse combinations analyzed
+→ Avg daily demand: 43-48 units/day
+→ Demand variability: ~40% CV
+→ Moderate but consistent volatility
+
+KPI 3-4 → Reorder Point:
+→ Average safety stock: ~82 units
+→ Average reorder point: ~410 units
+→ Lead time assumption: 7 days
+→ Service level: 95% (Z=1.65)
+
+KPI 5-6 → Demand Forecast:
+→ 116 high risk divergence signals
+→ 9.4% of SKUs showing significant
+   demand shift in last 30 days
+→ Seasonal products most volatile
+→ Dallas showing highest positive signals
+
+KPI 7 → Stockout Risk:
+→ ~240 SKUs CRITICAL (<7 days)
+→ ~60 SKUs HIGH (7-14 days)
+→ ~30 SKUs MEDIUM (14-30 days)
+→ 1 SKU LOW (30+ days)
+→ Dallas worst: -946 units
+
+KPI 8 → Projected Savings:
+→ Conservative: $114.7M recoverable
+→ Moderate:     $131.1M recoverable
+→ Aggressive:   $147.5M recoverable
+
 
 ## 🔬 Limitations & Further Investigation
 
