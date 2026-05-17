@@ -58,8 +58,10 @@ The question Phase 2 answers:
 | Database | PostgreSQL | Data storage and KPI queries |
 | Data Processing | Python (pandas) | Pipeline automation |
 | Statistical Analysis | statsmodels | Time series analysis |
-| ML Forecasting | scikit-learn | Linear regression demand model |
-| Advanced Forecasting | Prophet | Seasonal demand forecasting |
+| ML Baseline | scikit-learn (Linear Regression) | Demand forecast baseline model |
+| ML Advanced | scikit-learn (Random Forest) | Feature based demand forecasting |
+| ML Time Series | Prophet | Seasonal demand forecasting with confidence intervals |
+| Model Evaluation | scikit-learn (RMSE, MAE) | Model accuracy comparison and selection |
 | Dashboard | Power BI | Executive visualization |
 | API | FastAPI | REST endpoints |
 | Version Control | Git + GitHub | Code management |
