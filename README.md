@@ -396,7 +396,61 @@ rather than in-sample fit.
 | Random Forest | Ensemble ML | Non-linear patterns, feature importance |
 | Prophet | Time Series ML | Seasonality, confidence intervals |
 
+### 🤖 ML Forecasting Results
+
+#### Linear Regression (Baseline)
+| Metric | Value | Interpretation |
+|---|---|---|
+| Avg RMSE | 22.37 units | Avg prediction error on test set |
+| Avg MAE | 19.32 units | Avg absolute error on test set |
+| Error Rate | ~49% | High — cannot capture seasonality |
+| Increasing Trends | 499/500 SKUs | Demand growth across network |
+| Decreasing Trends | 0/500 SKUs | No declining demand detected |
+
+> **Conclusion:** Linear Regression establishes 
+> baseline performance but high error rate (49%) 
+> confirms demand patterns are non-linear — 
+> motivating Random Forest and Prophet models.
+
 ### Output Analysis
+RMSE = 22.37 (test set)
+MAE  = 22.37 (test set)
+
+This means:
+→ Linear Regression predicts demand
+   within ~19-22 units on average
+→ Average daily demand = 45 units
+→ Error rate = 22/45 = ~49%
+
+This is expected for Linear Regression:
+→ Cannot capture non-linear patterns
+→ Cannot capture seasonality
+→ Random Forest will improve this
+→ Prophet will improve further
+
+Interesting finding:
+→ 499 of 500 SKUs show increasing trend
+→ Only 1 stable
+→ Suggests overall demand growth
+   across simulation period
+
+#### Random Forest (Coming Soon)
+→ Feature engineering with seasonality variables
+→ Expected RMSE improvement over baseline
+→ Feature importance analysis
+
+#### Prophet (Coming Soon)
+→ Time series seasonal decomposition
+→ Q4 holiday demand capture
+→ Confidence interval forecasting
+
+### 📊 Model Comparison Framework
+| Model | RMSE | MAE | Captures Seasonality |
+|---|---|---|---|
+| Linear Regression | 22.37 | 19.32 | ❌ |
+| Random Forest | 🔨 In Progress | 🔨 | ✅ Partial |
+| Prophet | 🔨 In Progress | 🔨 | ✅ Full |
+
 
 ## 🔬 Limitations & Further Investigation
 
