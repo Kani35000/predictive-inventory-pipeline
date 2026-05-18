@@ -508,7 +508,15 @@ Trend findings:
 | Limitation | Linear only | Cannot capture seasonality |
 
 #### Random Forest
-→ Results after running
+✅ Random Forest forecast complete
+   SKUs modeled:    500
+   Avg RMSE (test): 11.55
+   Avg MAE (test):  9.81
+   Top Features:
+top_feature
+rolling_7            306
+is_holiday_season    192
+month                  2
 
 #### Prophet
 → Results after running
