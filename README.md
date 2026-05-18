@@ -447,9 +447,14 @@ Interesting finding:
 | Model | RMSE | MAE | Captures Seasonality |
 |---|---|---|---|
 | Linear Regression | 22.37 | 19.32 | ❌ |
-| Random Forest | 🔨 In Progress | 🔨 | ✅ Partial |
+| Random Forest | 11.55 | 9.81 | ✅ Partial |
 | Prophet | 🔨 In Progress | 🔨 | ✅ Full |
 
+Improvement Comparing Linear Regression and Random Forest:
+RMSE reduced by 48% ✅
+MAE  reduced by 49% ✅
+
+Random Forest is nearly 2x more accurate
 ### Model Evaluation Framework
 All models evaluated using holdout validation:
 Train set → Days 1-336 (first 336 days)
@@ -512,8 +517,23 @@ Trend findings:
 | Model | RMSE | MAE | Best For |
 |---|---|---|---|
 | Linear Regression | 22.37 | 19.32 | Baseline benchmark |
-| Random Forest | TBD | TBD | Feature based patterns |
+| Random Forest | 11.55 | 9.81 | Feature based patterns |
 | Prophet | TBD | TBD | Seasonal time series |
+
+#### Feature Importance Intelligence from Random Forest
+Top features:
+rolling_7         → 306 SKUs (61%)
+is_holiday_season → 192 SKUs (38%)
+month             →   2 SKUs  (1%)
+
+This tells us:
+→ Recent sales momentum (rolling_7)
+   is the strongest predictor
+→ Holiday season flag is second most
+   important for 38% of SKUs
+→ Confirms Phase 1 seasonal finding
+→ Q4 demand pattern is real and predictable
+
 
 > **Conclusion:** To be documented after
 > all three models complete
