@@ -492,6 +492,31 @@ Trend findings:
 → Linear model detecting noise as trend
 → Random Forest and Prophet should give more reliable results
 
+### 🤖 ML Model Results
+
+#### Linear Regression (Baseline)
+| Metric | Value | Interpretation |
+|---|---|---|
+| Avg RMSE | 22.37 units | ~48% error rate on avg demand |
+| Avg MAE | 19.32 units | Off by 19 units per day |
+| Increasing trends | 499/500 | Likely noise detection |
+| Limitation | Linear only | Cannot capture seasonality |
+
+#### Random Forest
+→ Results after running
+
+#### Prophet
+→ Results after running
+
+#### Model Comparison
+| Model | RMSE | MAE | Best For |
+|---|---|---|---|
+| Linear Regression | 22.37 | 19.32 | Baseline benchmark |
+| Random Forest | TBD | TBD | Feature based patterns |
+| Prophet | TBD | TBD | Seasonal time series |
+
+> **Conclusion:** To be documented after
+> all three models complete
 
 ## 🔬 Limitations & Further Investigation
 
