@@ -448,7 +448,7 @@ Interesting finding:
 |---|---|---|---|
 | Linear Regression | 22.37 | 19.32 | ❌ |
 | Random Forest | 11.55 | 9.81 | ✅ Partial |
-| Prophet | 🔨 In Progress | 🔨 | ✅ Full |
+| Prophet | 16.65 | 13.86 | ✅ Full |
 
 Improvement Comparing Linear Regression and Random Forest:
 RMSE reduced by 48% ✅
@@ -519,14 +519,20 @@ is_holiday_season    192
 month                  2
 
 #### Prophet
-→ Results after running
+✅ Prophet forecast complete
+   SKUs modeled:      500
+   Avg RMSE (test):   16.65
+   Avg MAE (test):    13.86
+   Increasing trends: 415
+   Decreasing trends: 60
+   Stable trends:     25
 
 #### Model Comparison
 | Model | RMSE | MAE | Best For |
 |---|---|---|---|
 | Linear Regression | 22.37 | 19.32 | Baseline benchmark |
 | Random Forest | 11.55 | 9.81 | Feature based patterns |
-| Prophet | TBD | TBD | Seasonal time series |
+| Prophet | 16.65 | 13.86 | Seasonal time series |
 
 #### Feature Importance Intelligence from Random Forest
 Top features:
