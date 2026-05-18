@@ -371,6 +371,32 @@ KPI 8 → Projected Savings:
 → Moderate:     $131.1M recoverable
 → Aggressive:   $147.5M recoverable
 
+## 🤖 ML Forecasting Methodology
+
+### Model Validation Approach
+All models evaluated using holdout validation:
+Training Set → Days 1-336   (first 336 days)
+Test Set     → Days 337-366 (last 30 days)
+Forecast     → Days 367-396 (next 30 days)
+
+This ensures RMSE and MAE metrics reflect 
+true out-of-sample forecasting accuracy 
+rather than in-sample fit.
+
+### Evaluation Metrics
+| Metric | Formula | Interpretation |
+|---|---|---|
+| RMSE | √(mean(actual - predicted)²) | Penalizes large errors more |
+| MAE | mean(|actual - predicted|) | Average absolute error in units |
+
+### Models Implemented
+| Model | Type | Strengths |
+|---|---|---|
+| Linear Regression | Baseline ML | Simple trend detection |
+| Random Forest | Ensemble ML | Non-linear patterns, feature importance |
+| Prophet | Time Series ML | Seasonality, confidence intervals |
+
+### Output Analysis
 
 ## 🔬 Limitations & Further Investigation
 
