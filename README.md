@@ -396,7 +396,6 @@ rather than in-sample fit.
 | Random Forest | Ensemble ML | Non-linear patterns, feature importance |
 | Prophet | Time Series ML | Seasonality, confidence intervals |
 
-### 🤖 ML Forecasting Results
 
 #### Linear Regression (Baseline)
 | Metric | Value | Interpretation |
@@ -450,6 +449,48 @@ Interesting finding:
 | Linear Regression | 22.37 | 19.32 | ❌ |
 | Random Forest | 🔨 In Progress | 🔨 | ✅ Partial |
 | Prophet | 🔨 In Progress | 🔨 | ✅ Full |
+
+### Model Evaluation Framework
+All models evaluated using holdout validation:
+Train set → Days 1-336 (first 336 days)
+Test set  → Days 337-366 (last 30 days)
+Forecast  → Days 367-396 (next 30 days)
+
+This ensures RMSE and MAE metrics reflect 
+true out-of-sample forecasting accuracy 
+rather than in-sample fit.
+
+### Evaluation Metrics
+| Metric | Formula | Interpretation |
+|---|---|---|
+| RMSE | √(mean(y_pred - y_true)²) | Penalizes large errors more |
+| MAE | mean(|y_pred - y_true|) | Average absolute error in units |
+
+### Models Implemented
+| Model | Type | Strengths |
+|---|---|---|
+| Linear Regression | Baseline ML | Trend detection, interpretable |
+| Random Forest | Ensemble ML | Non-linear patterns, feature importance |
+| Prophet | Time Series ML | Seasonality, confidence intervals |
+
+RMSE = 22.37 units
+MAE  = 22.37 units
+
+Meaning:
+→ On average predictions are off
+   by ~19 units per day
+→ Given avg demand of ~46 units/day
+→ Error rate = 19/46 = 41%
+→ Linear Regression alone is insufficient
+→ This is exactly why we need
+   Random Forest and Prophet
+
+Trend findings:
+→ 499 of 500 SKUs showing increasing trend
+→ Only 1 stable
+→ This is suspicious — likely simulation artifact
+→ Linear model detecting noise as trend
+→ Random Forest and Prophet should give more reliable results
 
 
 ## 🔬 Limitations & Further Investigation
