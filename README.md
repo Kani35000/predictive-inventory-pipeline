@@ -186,6 +186,7 @@ Lead Time = days for new order to arrive
 
 
 ### Stockout Risk Classification
+```
 days_until_stockout = current_inventory / avg_daily_demand
 🚨 CRITICAL → < 7 days   → Immediate reorder required
 🔴 HIGH     → < 14 days  → Reorder this week
@@ -196,7 +197,7 @@ days_until_stockout = current_inventory / avg_daily_demand
 Training Set → Days 1-336   (first 336 days per SKU)
 Test Set     → Days 337-366 (last 30 days per SKU)
 Forecast     → Days 367-396 (next 30 days prediction)
-
+```
 All RMSE and MAE metrics reflect true out-of-sample 
 accuracy on the held-out test set — not training data fit.
 
