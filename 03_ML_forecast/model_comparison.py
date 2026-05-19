@@ -96,6 +96,7 @@ def compare_models():
     })
     print(trend_comparison.to_string(index=False))
 
+
     return comparison, lr_results, rf_results, prophet_results
 
 if __name__ == "__main__":
