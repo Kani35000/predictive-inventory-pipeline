@@ -100,7 +100,7 @@ predictive-inventory-pipeline/
 ---
 
 ## Pipeline Structure
-
+```
 02_forecasting/
 ├── db_connection.py    ← database connection
 ├── extract_data.py     ← data extraction
@@ -115,6 +115,7 @@ predictive-inventory-pipeline/
 ├── random_forest_forecast.py      ← advanced model
 ├── prophet_forecast.py            ← time series model
 └── model_comparison.py            ← model evaluation
+```
 ---
 
 ## 📌 Project Status
