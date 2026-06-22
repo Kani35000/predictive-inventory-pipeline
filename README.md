@@ -127,7 +127,7 @@ predictive-inventory-pipeline/
 | ML Forecasting Layer (3 Models) | ✅ Complete |
 | Model Comparison Framework | ✅ Complete |
 | Power BI Predictive Dashboard | 🔨 Planned |
-| Research Publication | 🔨 In Progress |
+| Research Publication | ✅ Complete|
 
 ---
 
