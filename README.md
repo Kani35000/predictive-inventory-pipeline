@@ -385,7 +385,7 @@ Extending:
 *Okorji, K. (2026). Quantifying Retail Inventory Loss. 
 SSRN Electronic Journal. [ssrn.com/author=11236048](https://ssrn.com/author=11236048)*
 
-→ Status: 🔨 In Progress — targeting peer reviewed journal
+→ Status: 🔨 Sent in to the Supply Chain Management: An International Journal, for peer reviewed journal
 
 ---
 
