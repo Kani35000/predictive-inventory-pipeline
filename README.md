@@ -391,7 +391,7 @@ SSRN Electronic Journal. [ssrn.com/author=11236048](https://ssrn.com/author=1123
 
 ## Author
 
-**Kani Okorji**
+**Kanidaye Okorji**
 Data Analyst | Supply Chain & Inventory Analytics
 
 🎓 MS Project Management (Data Analytics) | MBA
