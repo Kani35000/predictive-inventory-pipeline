@@ -67,7 +67,7 @@ Phase 2 answers:
 | KPI 7 | Stockout Risk Score | ✅ Complete |
 | KPI 8 | Projected Savings from Optimization | ✅ Complete |
 | KPI 9 | ML Demand Forecast (3 Models) | ✅ Complete |
-| KPI 10 | Economic Order Quantity (EOQ) | 🔨 Planned |
+| KPI 10 | Economic Order Quantity (EOQ) | 🔨 Ongoing |
 
 ---
 
